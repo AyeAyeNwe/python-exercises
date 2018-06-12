@@ -1,28 +1,31 @@
+from sys import exit
+from random import randint
+from textwrap import dedent
 class Scene(object):
     def enter(self):
         print("This scene is not yet configured.")
         print("Subclass it and implement enter().")
         exit(1)
 class Engine(object):
-    def__init__(self, scene_map):
+    def __init__(self, scene_map):
         self.scene_map = scene_map
     def play(self):
         current_scene = self.scene_map.opening_scene()
         last_secne = self.scene_map.next_scene('finished')
         while current_scene != last_scene:
             next_scene_name = current_scene.enter()
-            current_scene = self.scene_map.next_scene(next_scene_name_
+            current_scene = self.scene_map.next_scene(next_scene_name)
         current_scene.enter()
 class Death(Scene):
     quips = [
             "You died. You kinda suck at this.",
             "Your Mom would be proud ... if she were smarter.",
             "such a luser",
-            I have a small puppy that's better at this."'
-            You're worse than your Dad's jokes."
+            "I have a small puppy that's better at this.",
+            "You're worse than your Dad's jokes."
             ]
     def enter(self):
-        print(Death.quips[randit(0, len (self.quips)-10])
+        print(Death.quips[randit(0, len (self.quips)-1)])
         exit(1)
 class CentralCorridor(Scene):
     def enter(self):
@@ -86,7 +89,7 @@ class LaserWeaponArmory(Scene):
                 get the bomb out.If you get the code wrong 10 times then
                 thelock closes forever and you can't get the bomb.The 
                 code is 3 digits."""))
-        code = f"{randint(1,9)}{randint(1,9)}{randint(1,9F)}"
+        code = f"{randint(1,9)}{randint(1,9)}{randint(1,9)}"
         guess = input("[keypad]> ")
         guesses = 0
         while guess != code and guesses < 10:
@@ -178,17 +181,17 @@ class EscapePod(Scene):
             return 'finished'
 class Map(object):
     scenes = {
-            'central_corridor':CentralCorridor(),
-            'laser_weapon_armory":LaserWeaponArmory(),
-            'the_bridge':TheBridge(),
-            'esccape_pod':EscapePod(),
-            'death':Death(),
-            'finished':Finished(),
+            'central_corridor': CentralCorridor(),
+            'laser_weapon_armory': LaserWeaponArmory(),
+            'the_bridge': TheBridge(),
+            'esccape_pod': EscapePod(),
+            'death': Death(),
+            'finished': Finished(),
             }
-    def__init__(self, start_scene):
+    def __init__(self, start_scene):
         self.start_scene = start_scene
-    sef next_scene(self, scene_name):
-        val = Map.scenes.get(scene_name_
+    def next_scene(self, scene_name):
+        val = Map.scenes.get(scene_name)
         return val
     def opening_scene(self):
         return self.next_scene(self.start_scene)
