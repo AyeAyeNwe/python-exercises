@@ -186,7 +186,6 @@ class Map(object):
             'the_bridge': TheBridge(),
             'esccape_pod': EscapePod(),
             'death': Death(),
-            'finished': Finished(),
             }
     def __init__(self, start_scene):
         self.start_scene = start_scene
