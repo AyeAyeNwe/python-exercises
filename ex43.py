@@ -11,7 +11,7 @@ class Engine(object):
         self.scene_map = scene_map
     def play(self):
         current_scene = self.scene_map.opening_scene()
-        last_secne = self.scene_map.next_scene('finished')
+        last_scene = self.scene_map.next_scene('finished')
         while current_scene != last_scene:
             next_scene_name = current_scene.enter()
             current_scene = self.scene_map.next_scene(next_scene_name)
@@ -25,7 +25,7 @@ class Death(Scene):
             "You're worse than your Dad's jokes."
             ]
     def enter(self):
-        print(Death.quips[randit(0, len (self.quips)-1)])
+        print(Death.quips[randint(0, len (self.quips)-1)])
         exit(1)
 class CentralCorridor(Scene):
     def enter(self):
@@ -179,13 +179,19 @@ class EscapePod(Scene):
                 time.You won!
                 """))
             return 'finished'
+class Finished(Scene):
+    def enter(self):
+        print("You won! Good Job.")
+        return 'finished'
+
 class Map(object):
     scenes = {
             'central_corridor': CentralCorridor(),
-            'laser_weapon_armory': LaserWeaponArmory(),
+            'laser_weapon_armory':LaserWeaponArmory(),
             'the_bridge': TheBridge(),
             'esccape_pod': EscapePod(),
             'death': Death(),
+            'finished': Finished(),
             }
     def __init__(self, start_scene):
         self.start_scene = start_scene
