@@ -7,7 +7,6 @@ print("How much do you weigh?", end='')
 weight = input()
 
 print(f"So, you're {age} old, {height} tall and {weight} heavy.")
-from sys import argv
 script, filename = argv
 
 txt = open(filename)
@@ -17,8 +16,7 @@ print(txt.read())
 
 print("Type the filename again:")
 file_again = input("> ")
-
-txt = open(file_again)
+txt_again = open(file_again)
 print(txt_again.read())
 
 print("let's practice everything.")
@@ -47,13 +45,13 @@ def secret_formula(started):
     return jelly_beans, jars, crates
 
 start_point = 10000
-beans, jars = secret_formula(start_point)
+beans, jars,crates = secret_formula(start_point)
 print("With a starting point of: {}".format(start_point))
 
 print(f"WE'd have {beans} beans, {jars} jars, and {crates} crates.")
 start_point = start_point / 10
 print("We can also do that this way:")
-formula = secret_formula(startpoint)
+formula = secret_formula(start_point)
 print("We'd have {} beans,{} jars, and {} crates.".format(*formula))
 
 people = 20
